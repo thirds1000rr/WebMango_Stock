@@ -1,0 +1,53 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+</head>
+<body>
+  <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+  <div class="sticky">
+    <h1>Mango Store 🥭</h1>
+  </div>
+  <div class="nav">
+    <p><a href="/">Home</a> > <a href="/sell">Sell</a> > <a href="/viewproduct/">View Product</a> > <a href="/viewproduct/{{prodID}}">{{name}}</a> > <a href="">Edit</a></p>
+  </div>
+  <h2>Edit Product</h2>
+  <form action="" method="POST">
+    <table>
+      <tr>
+        <td>ชื่อ :</td><td><input type="text" name="name" value="{{name}}" required></td>
+      </tr>
+      <tr>
+        <td>จำนวน :</td><td><input type="number" name="qty" value="{{qty}}" min="0" required></td>
+      </tr>
+      <tr>
+        <td>ประเภท :</td>
+        <td><select name="category" required>
+          
+          <option value="Food and Groceries" {% if category=="Food and Groceries" %}selected{% endif %}>Food and Groceries</option>
+
+          <option value="Mango" {% if category=="Mango" %}selected{% endif %}>Mango</option>
+
+        </select></td>
+      </tr>
+      <tr>
+        <td>ราคา :</td><td><input type="number" name="price" value="{{price}}" min="0" required></td>
+      </tr>
+      <tr>
+        <td>รายละเอียด :</td><td><textarea name="desp">{{desp}}</textarea></td>
+      </tr>
+    </table>
+    <input type="submit" value="Apply Changes" style="display:block; margin-left:auto; margin-right:auto; margin-top:1vw;">
+  </form>
+
+     <!--Chat Bubble-->
+   <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</body>
+</html>

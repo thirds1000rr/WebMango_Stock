@@ -1,0 +1,60 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+</head>
+    <body>
+      <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+      <div class="sticky">
+        <h1>Mango Store 🥭</h1>
+      </div>
+      <div class="nav">
+        <p><a href="/">Home</a> >
+        {% if type=="Seller" %}<a href="/sell/">Sell</a> >
+        {% else %}<a href="/buy/">Buy</a> > {% endif %}
+        <a href="/viewproduct">View Product</a> > <a href="">{{name}}</a></p>
+      </div>
+        <h2>ข้อมูลสินค้า</h2>
+        <table>
+            <tr>
+                <td>ชื่อสินค้า :</td><td>{{name}}</td>
+            </tr>
+            <tr>
+                <td>In Stock :</td><td>{{quantity}}</td>
+            </tr>
+            <tr>
+                <td>หมวดหมู่ :</td><td>{{category}}</td>
+            </tr>
+            <tr>
+                <td>ราคา :</td>
+                {% if type=="Seller" %}<td>บาท {{cost_price}}</td>
+                {% else %}<td>บาท {{sell_price}}</td>{% endif %}
+            </tr>
+            {% if type=="Customer" %}
+            <tr>
+                <td>Sold By :</td><td><a href="/viewprofile/{{sell_id}}" target="blank">{{sell_name}}</a></td>
+            </tr>{% endif %}
+            <tr>
+              <td>เกี่ยวกับ :</td><td><pre>{{desp}}</pre></td>
+            </tr>
+        </table>
+        <div class="centerthis">
+        {% if type=="Seller" %}
+        <p class="press"><a href="/viewproduct/{{prod_id}}/edit">ADD Product</a></p>
+        {% else %}
+        <p class="press"><a href="/buy/{{prod_id}}">ซื้อสินค้า</a></p>
+        <p class="press"><a href="/buy/cart/{{prod_id}}">หยิบใส่ตะกร้า</a></p>
+        {% endif %}
+        </div>
+        
+   <!--Chat Bubble-->
+   <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    </body>
+</html>

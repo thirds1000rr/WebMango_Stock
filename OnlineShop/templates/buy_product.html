@@ -1,0 +1,48 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+
+</head>
+<body>
+
+
+  <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+  <div class="sticky">
+    
+    <h1>Mango Store 🥭</h1>
+  </div>
+  <div class="nav">
+  <p><a href="/">Home</a> > <a href="/buy">ซื้อ</a> > <a href="">{{name}}</a></p>
+  </div>
+  <h2>{{name}}</h2>
+  <form action="" method="POST">
+    <table>
+      <tr>
+        <td>ชนิด :</td><td>{{category}}</td>
+      </tr>
+      <tr>
+        <td>รายละเอียด :</td><td><pre>{{desp}}</pre></td>
+      </tr>
+      <tr>
+        <td>จำนวน (select quantity):</td><td><input type="number" name="qty" value="1" min="1" max='{{quantity}}'></td>
+      </tr>
+      <tr>
+        <td>ราคา/ชิ้น :</td><td>บาท {{price}}</td>
+      </tr>
+    </table>
+    <input type="submit" value="PROCEED" style="display:block; margin-left:auto; margin-right:auto; margin-top:1vw;">
+  </form>
+  
+   <!--Chat Bubble-->
+   <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+</head>
+<body>
+  <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+  <div class="sticky">
+    <h1>Mango Store 🥭</h1>
+  </div>
+  <div class="nav">
+    <p><a href="/">Home</a> > <a href="">ซื้อ</a><p>
+  </div>
+  <ul class="headbar">
+    <li><a href="">ค้นหาสินค้า</a></li>
+    <li><a href="./myorders">My Orders</a></li>
+    <li><a href="./cart">My Cart</a></li>
+    <li><a href="./purchases">My Purchases</a></li>
+  </ul>
+  <div class="centerthis">
+  <form action="" method="POST" onsubmit="return checkSelect()">
+    <h3><input type="radio" value="by keyword" name="search method" checked>ค้นหาด้วย keywords</h3>
+    <input type="search" name="keyword" value="">
+    <br>
+   <h3><input type="radio" value="by category" name="search method">ค้นหาจากประเภทสินค้า</h3>
+   <select name="category">
+    <option value="" disabled selected>กรุณาเลือกประเภทสินค้า</option>
+
+    <option value="Food and Groceries">Food and Groceries</option>
+
+    <option value="Mango">Mango</option>
+   </select>
+   <br>
+   <h3><input type="radio" value="both" name="search method">Both</h3>
+   <br>
+   <p><input type="submit" value="SEARCH"></p>
+  </form>
+  </div>
+ <br><br>
+ {% if after_srch %}
+  {% if results|length==0 %}
+    <p>No results match your search</p>
+  {% else %}
+ <table>
+   <tr>
+     <th>SNo.</th><th>ชื่อ</th>
+     <th>ประเภท</th><th>ราคา</th><th></th>
+   </tr>
+   {% set cnt={'val':1} %}
+   {% for i in results %}
+   <tr>
+     <td>{{cnt['val']}}</td> <td>{{i[1]}}</td>  <td>{{i[2]}}</td> <td>บาท {{i[3]}}</td>
+    <td><a href="/viewproduct/{{i[0]}}">View</a></td>
+   </tr>
+   {% if cnt.update({'val':(cnt['val']+1)}) %}{% endif %}
+   {% endfor %}
+ </table>
+ {% endif %}
+ {% endif %}
+
+      <!--Chat Bubble-->
+   <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+ <script type="text/javascript" src="{{url_for('static', filename='main.js')}}"></script>
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</body>
+</html>

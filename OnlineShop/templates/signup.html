@@ -1,0 +1,78 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+</head>
+<body>
+  <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+  <div class="sticky">
+    <h1>ยินดีต้อนรับสู่ Mango Store 🥭</h1>
+  </div>
+  <div class="nav">
+    <p><a href="/">Home</a> > <a href="">Create Account</a></p>
+  </div>
+  {% if not ok %}
+    <p>Sorry! Account with provided email already exists. Please enter another email</p>
+  {% endif %}
+  <form action="" method="POST" onsubmit="return checkEqual()">
+    <h2>สร้างบัญชีผู้ใช้ใหม่:</h2>
+    <table>
+    <tr>
+      <td>ประเภทของบัญชี: </td>
+      <td>
+        <input type="radio" value="Customer" name="type" checked>Customer &nbsp &nbsp
+      </td>
+    </tr>
+    <tr>
+      <td>ชื่อ :</td><td><input type="text" name="name" required></td>
+    </tr>
+    <tr>
+      <td>อีเมล :</td><td><input type="email" name="email" required></td>
+    </tr>
+    <tr>
+      <td>เบอร์โทรศัพท์ :</td><td><input type="tel" name="phone" required></td>
+    </tr>
+    <tr>
+      <td><b>ที่อยู่:</b></td>
+    </tr>
+    <tr>
+      <td>LANDMARK/AREA:</td><td><input type="text" name="area" required></td>
+    </tr>
+    <tr>
+      <td>LOCALITY :</td><td><input type="text" name="locality" required></td>
+    </tr>
+    <tr>
+      <td>เมือง :</td><td><input type="text" name="city" required></td>
+    </tr>
+    <tr>
+      <td>ตำบล :</td><td><input type="text" name="state" required></td>
+    </tr>
+    <tr>
+      <td>ประเทศ :</td><td><input type="text" name="country" required></td>
+    </tr>
+    <tr>
+      <td>รหัสไปรษณีย์ :</td><td><input type="text" name="zip" required></td>
+    </tr>
+    <tr>
+      <td>กรอกรหัสผ่าน :</td><td><input type="password" name="password" required></td>
+    </tr>
+    <tr>
+      <td>กรอกรหัสผ่านอีกครั้ง :</td><td><input type="password" name="cnfrm_psswd" required></td>
+    </tr>
+    </table>
+    <p><input type="submit" value="SUBMIT" onclick = "submit()" style="display:block; margin-left:auto; margin-right:auto; margin-top:1vw;"></p>
+ 
+   <!--Chat Bubble-->
+   <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+    <script type="text/javascript" src="{{url_for('static', filename='main.js')}}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+  </form>
+</body>
+</html>

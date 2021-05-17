@@ -1,0 +1,44 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+</head>
+<body>
+  <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+  <div class="sticky">
+    <h1>Mango Store 🥭</h1>
+  </div>
+  <div class="nav">
+  <p><a href="/">Home</a> > <a href="/viewprofile">View Profiles</a> > <a href="/viewprofile/{{id}}">{{name}}</a> > <a href="">สินค้า</a></p>
+  </div>
+  <h2>สินค้าแบรนด์ของ {{name}}</h2>
+  {% if results|length==0 %}
+  <p>คุณยังไม่มีสินค้าใดๆตอนนี้.</p>
+  {% else %}
+  <table>
+    <tr>
+      <th>SNo.</th><th>ชื่อ</th>
+      <th>ประเภท</th><th>ราคา</th><th></th>
+    </tr>
+    {% set cnt={'val':1} %}
+    {% for i in results %}
+    <tr>
+      <td>{{cnt['val']}}</td> <td>{{i[1]}}</td>  <td>{{i[2]}}</td>    <td>บาท {{i[3]}}</td>
+     <td><a href="/viewproduct/{{i[0]}}" target="blank">View</a></td>
+    </tr>
+    {% if cnt.update({'val':(cnt['val']+1)}) %}{% endif %}
+    {% endfor %}
+  </table>
+  {% endif %}
+   <!--Chat Bubble-->
+   <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</body>
+</html>

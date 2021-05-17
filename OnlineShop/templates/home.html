@@ -1,0 +1,46 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+</head>
+<body>
+  <div class="sticky">
+    <h1>ยินดีต้อนรับสู่ Mango Store 🥭</h1></div>
+  <ul class="headbar">
+    <li><a href="/">Home</a></li>
+    <li><a href="/signup">สร้างบัญชีผู้ใช้ใหม่</a></li>
+    {% if signedin %}
+      <li><a href="/logout">ออกจากระบบ</a></li>
+    {% else %}
+      <li><a href="/login">เข้าสู่ระบบ</a></li>
+    {% endif %}
+  </ul>
+  {% if signedin %}
+    <p><br/>Signed in as {{name}} -> {{type}} Account</p>
+    <div class="centerthis">
+    <p class="press"><a href="/viewprofile/">View Profiles</a></p>
+    <p class="press"><a href="/editprofile">Edit Profile</a></p>
+    {% if type=="Customer" %}
+      <p class="press"><a href="/buy">ซื้อสินค้า</a></p>
+    {% elif type=="Seller" %}
+      <p class="press"><a href="/sell">ขายสินค้า</a></p>
+    {% endif %}
+    <p class="press"><a href="/changepassword">เปลี่ยนรหัสผ่าน</a></p>
+    </div>
+  {% else %}
+    <p><br/>You are not currently signed in. Sign in to view Products/Profiles.</p>
+  {% endif %}
+  </div>
+  <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+
+   <!--Chat Bubble-->
+   <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</body>
+</html>

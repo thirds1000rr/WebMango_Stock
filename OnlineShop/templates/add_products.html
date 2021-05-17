@@ -1,0 +1,62 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+</head>
+<body>
+
+
+  <div class="sticky">
+    <h1>Mango Store 🥭</h1>
+    
+  </div>
+  <div class="nav">
+    <p><a href="/">Home</a> > <a href="/sell/">ขาย</a> > <a href="">เพิ่มรายการสินค้าใหม่</a></p>
+  </div>
+  <h2>เพิ่มสินค้า:</h2>
+  <form action="" method="POST">
+    <table>
+      <tr>
+        <td>ชื่อ: </td><td><input type="text" name="name" required></td>
+      </tr>
+      <tr>
+        <td>จำนวน: </td><td><input type="number" name="qty" min="0" required></td>
+      </tr>
+      <tr>
+        <td>ประเภท: </td>
+        <td><select name="category" required>
+          <option value="" disabled selected>กรุณาเลือกประเภทสินค้า</option>
+
+          <option value="Food and Groceries">Food and Groceries</option>
+          <option value="Mango">Mango</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>ราคา(บาท): </td><td><input type="number" name="price" min="0" required></td>
+      </tr>
+      <tr>
+        <td>รายละเอียดเพิ่มเติม: </td><td><textarea name="desp"></textarea></td>
+      </tr>
+    </table>
+    <input type="submit" value="Add Product" style="display:block; margin-left:auto; margin-right:auto; margin-top:1vw;">
+  </form>
+  <div>
+    <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+
+    </div>
+    <!--Chat Bubble-->
+    <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</body>
+</html>

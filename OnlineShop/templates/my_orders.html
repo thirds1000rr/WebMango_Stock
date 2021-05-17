@@ -1,0 +1,50 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+</head>
+<body>
+  <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+  <div class="sticky">
+    <h1>Mango Store 🥭</h1>
+  </div>
+  <div class="nav">
+  <p><a href="/">Home</a> > <a href="/buy">ซื้อ</a> > <a href="">รายการสั่งซื้อของฉัน</a></p>
+  </div>
+  <h2>รายการสั่งซื้อของฉัน</h2>
+  {% if orders|length==0 %}
+  <p>คุณยังไม่มีรายการสั่งซืิ้อ</p>
+  {% else %}
+  <table>
+    <tr>
+      <th>SNO.</th><th>สินค้า</th><th>จำนวน</th><th>จำนวนรวม</th><th>วันที่เวลา</th><th>สถานะ</th><th></th>
+    </tr>
+    {% set cnt={'val':1} %}
+    {% for i in orders %}
+    <tr>
+      <td>{{cnt['val']}}</td><td><a href="/viewproduct/{{i[1]}}">{{i[2]}}</a></td><td>{{i[3]}}</td>
+      <td>{{i[4]}} บาท</td><td>{{i[5]}}</td><td>{{i[6]}}</td>
+      {% if i[6]=="PLACED" %}
+      <td><p class="press"><a href="/cancel/{{i[0]}}">Cancel Order</a></p></td>
+      {% elif i[6]=="DISPACHED" %}
+      <td><p class="press"><a href="/recieve/{{i[0]}}">Recieved Order</a></p></td>
+      {% else %}
+      <td></td>
+      {% endif %}
+    </tr>
+    {%if cnt.update({'val':(cnt['val']+1)}) %}{% endif %}
+    {% endfor %}
+  </table>
+  {% endif %}
+
+   <!--Chat Bubble-->
+   <div class="powr-chat" id="96348727_1621088301"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</body>
+</html>
